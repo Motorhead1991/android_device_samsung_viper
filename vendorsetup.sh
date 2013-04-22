@@ -1,0 +1,2 @@
+add_lunch_combo arearom_viper-eng
+add_lunch_combo arearom_viper-userdebug
