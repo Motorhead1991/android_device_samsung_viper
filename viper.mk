@@ -94,8 +94,6 @@ PRODUCT_COPY_FILES += \
     device/samsung/viper/prebuilt/hostapd:system/bin/hostapd \
     device/samsung/viper/prebuilt/hostapd.conf:system/etc/wifi/hostapd.conf
     
-
-
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -109,7 +107,20 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
-#Kernel Modules for Recovery (RFS)
+# Kernel binaries for recovery
+PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/prebuilt/busybox:root/sbin/busybox \
+#	$(LOCAL_PATH)/prebuilt/e2fsck:root/sbin/e2fsck \
+#	$(LOCAL_PATH)/prebuilt/fat.format:root/sbin/fat.format \
+#	$(LOCAL_PATH)/prebuilt/fix_permissions:root/sbin/fix_permissions \
+#	$(LOCAL_PATH)/prebuilt/mke2fs:root/sbin/mke2fs \
+#	$(LOCAL_PATH)/prebuilt/parted:root/sbin/parted \
+#	$(LOCAL_PATH)/prebuilt/sdparted:root/sbin/sdparted \
+#	$(LOCAL_PATH)/prebuilt/tune2fs:root/sbin/tune2fs \
+#	$(LOCAL_PATH)/scripts/busybox.sh:root/sbin/busybox.sh \
+	
+
+#Kernel Modules for Recovery
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/modules/ansi_cprng.ko:root/lib/modules/ansi_cprng.ko \
 	$(LOCAL_PATH)/prebuilt/modules/bthid.ko:root/lib/modules/bthid.ko \
@@ -207,6 +218,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072  \
     ro.compcache.default=0
 
+#move recovery binary in place
+PRODUCT_COPY_FILES += \
+#	out/target/product/viper/recovery/root/sbin/recovery:root/sbin/recovery
 # See comment at the top of this file. This is where the other
 # half of the device-specific product definition file takes care
 # of the aspects that require proprietary drivers that aren't
