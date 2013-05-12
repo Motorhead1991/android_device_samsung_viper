@@ -57,9 +57,9 @@ service recovery /sbin/recovery
 service adbd /sbin/adbd recovery
 	disabled
 
-on property:ro.debuggable=1
+on property:persist.service.adb.enable=1
     start adbd
 
-on property:re.debuggable=0
+on property:persist.service.adb.enable=0
     stop adbd
 

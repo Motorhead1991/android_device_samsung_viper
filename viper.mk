@@ -75,9 +75,12 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_COPY_FILES += \
-    device/samsung/viper/config/init.smdkc110.rc:/root/init.smdkc110.rc \
-    device/samsung/viper/config/ueventd.rc:root/ueventd.rc \
-    device/samsung/viper/config/ueventd.smdkc110.rc:root/ueventd.smdkc.rc
+    device/samsung/viper/config/init.smdkc110.rc:root/init.smdkc110.rc \
+    #device/samsung/viper/config/ueventd.rc:root/ueventd.rc \
+    device/samsung/viper/config/ueventd.smdkc110.rc:root/ueventd.smdkc110.rc \
+    device/samsung/viper/config/lpm.rc:root/lpm.rc \
+    device/samsung/viper/config/fota.rc:root/fota.rc \
+    device/samsung/viper/config/init.rc:root/init.rc
 
 # 3d
 PRODUCT_COPY_FILES += \
@@ -127,13 +130,16 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/modules/dhd.ko:root/lib/modules/dhd.ko \
 	$(LOCAL_PATH)/prebuilt/modules/dpram.ko:root/lib/modules/dpram.ko \
 	$(LOCAL_PATH)/prebuilt/modules/j4fs.ko:root/lib/modules/j4fs.ko \
-	$(LOCAL_PATH)/prebuilt/modules/modem_if.ko:root/lib/modules/modem_if.ko \
 	$(LOCAL_PATH)/prebuilt/modules/param.ko:root/lib/modules/param.ko \
 	$(LOCAL_PATH)/prebuilt/modules/scsi_wait_scan.ko:root/lib/modules/scsi_wait_scan.ko \
 	$(LOCAL_PATH)/prebuilt/modules/vibrator.ko:root/lib/modules/vibrator.ko \
 	$(LOCAL_PATH)/prebuilt/modules/wtlfota_dpram.ko:root/lib/modules/wtlfota_dpram.ko \
 	$(LOCAL_PATH)/prebuilt/modules/wtlfota_idpram.ko:root/lib/modules/wtlfota_idpram.ko
 
+ifeq ($(SUB_MODEL),S720C)
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/modules/modem_if.ko:root/lib/modules/modem_if.ko
+endif
 
 #recovery.fstab
 PRODUCT_COPY_FILES += \
@@ -197,6 +203,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.allow.mock.location=1 \
     ro.debuggable=1
+	persist.service.adb.enable=1
 
 
 # we have enough storage space to hold precise GC data

@@ -2,6 +2,9 @@
 #
 # Product-specific compile-time definitions.
 #
+
+LOCAL_PATH:= $(call my-dir)
+
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
@@ -13,7 +16,7 @@ TARGET_OTA_ASSERT_DEVICE := viper,SCH-I110
 # The generic product target doesn't have any hardware-specific pieces.
 TARGET_NO_BOOTLOADER := true
 
-TARGET_BOARD_PLATFORM := SMDKC110
+TARGET_BOARD_PLATFORM := s5pc110
 TARGET_BOARD_PLATFORM_GPU := pvr-sgx540
 
 TARGET_CPU_ABI := armeabi-v7a
@@ -53,11 +56,12 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_SDCARD_INTERNAL := false
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB565"
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/viper/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/viper/recovery/graphics.c
 TARGET_RECOVERY_INITRC := device/samsung/viper/recovery/recovery.rc
+BOARD_VIP_RECOVERY := true
 
 TARGET_KERNEL_SOURCE := kernel/samsung/s5pv210
 TARGET_KERNEL_CONFIG := viper_cwm_defconfig
